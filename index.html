@@ -346,6 +346,38 @@
       color: var(--ink-soft);
     }
 
+    .rules {
+      display: grid;
+      gap: 1.35rem;
+      padding: 0.35rem 0 0.5rem;
+      text-align: left;
+    }
+
+    .rule h3 {
+      margin: 0 0 0.55rem;
+      font-family: "Unbounded", sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: var(--sea-deep);
+    }
+
+    .rule p {
+      margin: 0 0 0.45rem;
+      max-width: none;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .rule p:last-child { margin-bottom: 0; }
+
+    .rule .lang {
+      display: inline-block;
+      min-width: 1.6rem;
+      font-weight: 700;
+      color: var(--matrix-dim);
+    }
+
     footer {
       border-top: 1px solid var(--line);
       padding: 1.5rem 0 2.5rem;
@@ -415,7 +447,7 @@
           </svg>
           Discord
         </a>
-        <a class="ghost" href="#coming">Coming soon</a>
+        <a class="ghost" href="#coming">Rules</a>
       </div>
     </div>
   </header>
@@ -456,16 +488,46 @@
     </section>
 
     <section id="coming">
-      <h2>Prochainement</h2>
-      <p>Les outils du world arrivent. Choisis un onglet.</p>
+      <h2>Serveur</h2>
+      <p>Règlement Discord et outils à venir.</p>
       <div class="tabs" data-tabs>
-        <div class="tablist" role="tablist" aria-label="Coming soon">
-          <button type="button" role="tab" id="tab-options" aria-controls="panel-options" aria-selected="true">Options YAML</button>
+        <div class="tablist" role="tablist" aria-label="Sections">
+          <button type="button" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="true">Rules</button>
+          <button type="button" role="tab" id="tab-options" aria-controls="panel-options" aria-selected="false" tabindex="-1">Options YAML</button>
           <button type="button" role="tab" id="tab-guide" aria-controls="panel-guide" aria-selected="false" tabindex="-1">Guide</button>
           <button type="button" role="tab" id="tab-download" aria-controls="panel-download" aria-selected="false" tabindex="-1">Download</button>
           <button type="button" role="tab" id="tab-tracker" aria-controls="panel-tracker" aria-selected="false" tabindex="-1">Tracker</button>
         </div>
-        <div class="tab-panel" role="tabpanel" id="panel-options" aria-labelledby="tab-options">
+        <div class="tab-panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
+          <div class="rules">
+            <article class="rule">
+              <h3>Respect &amp; Entraide / Respect &amp; Support</h3>
+              <p><span class="lang">FR</span> Soyez respectueux envers tous les membres. Aucune insulte, discrimination, harcèlement ou comportement toxique ne sera toléré.</p>
+              <p><span class="lang">EN</span> Be respectful to all members. No insults, discrimination, harassment, or toxic behavior will be tolerated.</p>
+            </article>
+            <article class="rule">
+              <h3>Utilisation de l’IA / AI Usage</h3>
+              <p><span class="lang">FR</span> L’IA est un assistant, pas un développeur à 100%. Ne postez pas de code entièrement généré par IA sans l’avoir testé, compris et validé vous-même. Le travail humain reste au cœur du serveur.</p>
+              <p><span class="lang">EN</span> AI is an assistant, not a 100% developer. Do not post fully AI-generated code without testing, understanding, and validating it yourself. Human work remains core.</p>
+            </article>
+            <article class="rule">
+              <h3>Indépendance d’Archipelago / Archipelago Disclaimer</h3>
+              <p><span class="lang">FR</span> Pas de confusion avec le projet officiel. Nos projets multiworld sont indépendants. Ne partagez pas de liens trompeurs et ne sollicitez pas l’équipe officielle d’Archipelago pour nos mods.</p>
+              <p><span class="lang">EN</span> No confusion with the official project. Our multiworld projects are independent. Do not share misleading links or ping the official Archipelago team for our custom mods.</p>
+            </article>
+            <article class="rule">
+              <h3>Contenu &amp; Sécurité / Content &amp; Security</h3>
+              <p><span class="lang">FR</span> Pas de spam, de liens malveillants ou de piratage. Partagez uniquement du code sûr et respectez les salons thématiques pour vos discussions et projets.</p>
+              <p><span class="lang">EN</span> No spam, malicious links, or piracy. Only share safe code and use the appropriate thematic channels for your discussions and projects.</p>
+            </article>
+            <article class="rule">
+              <h3>Utilisation du Support / Support Tickets</h3>
+              <p><span class="lang">FR</span> Utilisez les tickets à bon escient. Ouvrez un ticket uniquement en cas de problème technique réel ou de réclamation. Soyez patient avec l’équipe d’administration.</p>
+              <p><span class="lang">EN</span> Use tickets wisely. Open a ticket only for actual technical issues or appeals. Please be patient with the administration team.</p>
+            </article>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-options" aria-labelledby="tab-options" hidden>
           <div class="coming">
             <strong>Coming soon</strong>
             <p>Générateur d’options YAML pour Synthetic Shores.</p>
