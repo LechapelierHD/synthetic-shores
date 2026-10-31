@@ -329,6 +329,102 @@ section p,
 
 .page-intro { margin-bottom: 1.5rem; }
 
+.staff-page {
+  padding-top: clamp(2rem, 5vw, 3rem);
+}
+
+.staff-hero {
+  max-width: 40rem;
+  margin-bottom: 1.75rem;
+}
+
+.staff-hero .page-title {
+  margin-bottom: 0.75rem;
+}
+
+.staff-banner {
+  margin: 0 0 2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.staff-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 53, 62, 0.15), transparent 40%),
+    linear-gradient(0deg, rgba(10, 53, 62, 0.35), transparent 45%);
+  pointer-events: none;
+}
+
+.staff-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.staff-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 720px) {
+  .staff-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.staff-member {
+  padding-top: 0.95rem;
+  border-top: 2px solid var(--matrix-dim);
+}
+
+.staff-member .role {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--matrix-dim);
+}
+
+.staff-member h2 {
+  margin: 0 0 0.55rem;
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--sea-deep);
+}
+
+.staff-member p {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.staff-note {
+  margin: 0 0 2rem;
+  max-width: 42ch;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--sea-deep);
+}
+
 .block {
   padding: clamp(2rem, 5vw, 2.75rem) 0;
   border-top: 1px solid var(--line);
