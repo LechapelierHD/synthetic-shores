@@ -286,6 +286,66 @@
       margin-bottom: 0.2rem;
     }
 
+    .tabs {
+      margin-top: 1.25rem;
+    }
+
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      border-bottom: 1px solid var(--line);
+      margin: 0 0 1.25rem;
+    }
+
+    .tablist button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      font-family: "Unbounded", sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding: 0.85rem 0.95rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tablist button:hover { color: var(--sea-deep); }
+
+    .tablist button[aria-selected="true"] {
+      color: var(--sea-deep);
+      border-bottom-color: var(--matrix-dim);
+    }
+
+    .tab-panel[hidden] { display: none; }
+
+    .coming {
+      padding: 1.75rem 0 0.5rem;
+      text-align: center;
+    }
+
+    .coming strong {
+      display: block;
+      font-family: "Unbounded", sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 3vw, 1.55rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sea-deep);
+      margin-bottom: 0.45rem;
+    }
+
+    .coming p {
+      margin: 0 auto;
+      max-width: 38ch;
+      color: var(--ink-soft);
+    }
+
     footer {
       border-top: 1px solid var(--line);
       padding: 1.5rem 0 2.5rem;
@@ -355,7 +415,7 @@
           </svg>
           Discord
         </a>
-        <a class="ghost" href="#multiworld">Comment ça marche</a>
+        <a class="ghost" href="#coming">Coming soon</a>
       </div>
     </div>
   </header>
@@ -395,6 +455,43 @@
       </div>
     </section>
 
+    <section id="coming">
+      <h2>Prochainement</h2>
+      <p>Les outils du world arrivent. Choisis un onglet.</p>
+      <div class="tabs" data-tabs>
+        <div class="tablist" role="tablist" aria-label="Coming soon">
+          <button type="button" role="tab" id="tab-options" aria-controls="panel-options" aria-selected="true">Options YAML</button>
+          <button type="button" role="tab" id="tab-guide" aria-controls="panel-guide" aria-selected="false" tabindex="-1">Guide</button>
+          <button type="button" role="tab" id="tab-download" aria-controls="panel-download" aria-selected="false" tabindex="-1">Download</button>
+          <button type="button" role="tab" id="tab-tracker" aria-controls="panel-tracker" aria-selected="false" tabindex="-1">Tracker</button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-options" aria-labelledby="tab-options">
+          <div class="coming">
+            <strong>Coming soon</strong>
+            <p>Générateur d’options YAML pour Synthetic Shores.</p>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-guide" aria-labelledby="tab-guide" hidden>
+          <div class="coming">
+            <strong>Coming soon</strong>
+            <p>Setup client, apworld et connexion multiworld.</p>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-download" aria-labelledby="tab-download" hidden>
+          <div class="coming">
+            <strong>Coming soon</strong>
+            <p>Releases .apworld et assets du world.</p>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-tracker" aria-labelledby="tab-tracker" hidden>
+          <div class="coming">
+            <strong>Coming soon</strong>
+            <p>Tracker de locations et progression.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       Synthetic Shores ·
       <a href="https://discord.gg/znpyfQBtC" target="_blank" rel="noopener">Discord</a>
@@ -420,6 +517,39 @@
     } else {
       sections.forEach((s) => s.classList.add("in"));
     }
+
+    document.querySelectorAll("[data-tabs]").forEach((root) => {
+      const tabs = [...root.querySelectorAll('[role="tab"]')];
+      const panels = [...root.querySelectorAll('[role="tabpanel"]')];
+
+      function activate(tab) {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.tabIndex = on ? 0 : -1;
+        });
+        panels.forEach((p) => {
+          p.hidden = p.id !== tab.getAttribute("aria-controls");
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activate(tab));
+        tab.addEventListener("keydown", (e) => {
+          const i = tabs.indexOf(tab);
+          let next = -1;
+          if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
+          if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
+          if (e.key === "Home") next = 0;
+          if (e.key === "End") next = tabs.length - 1;
+          if (next >= 0) {
+            e.preventDefault();
+            tabs[next].focus();
+            activate(tabs[next]);
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
