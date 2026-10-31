@@ -287,9 +287,9 @@ a { color: inherit; }
 }
 
 main {
-  width: min(920px, calc(100% - 2.5rem));
+  width: min(960px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: clamp(3.5rem, 8vw, 5.5rem) 0 4rem;
+  padding: clamp(3.25rem, 7vw, 5rem) 0 3.5rem;
 }
 
 .page-main {
@@ -297,7 +297,7 @@ main {
 }
 
 section {
-  margin: 0 0 clamp(3rem, 7vw, 4.5rem);
+  margin: 0;
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
@@ -311,10 +311,10 @@ section.in,
 
 section h2,
 .page-title {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.55rem;
   font-family: "Unbounded", sans-serif;
   font-weight: 700;
-  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-size: clamp(1.45rem, 3vw, 1.95rem);
   letter-spacing: -0.02em;
   color: var(--sea-deep);
 }
@@ -329,68 +329,55 @@ section p,
 
 .page-intro { margin-bottom: 1.5rem; }
 
-.team {
-  display: grid;
-  gap: 1.5rem;
-  align-items: start;
+.block {
+  padding: clamp(2rem, 5vw, 2.75rem) 0;
+  border-top: 1px solid var(--line);
 }
 
-@media (min-width: 780px) {
-  .team {
-    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.75fr);
-    gap: 2rem;
-  }
+.block:first-of-type { border-top: none; padding-top: 0.25rem; }
+
+.block-head {
+  margin-bottom: 1.35rem;
+  max-width: 40rem;
 }
 
-.team-hook {
-  margin: 0 0 1rem;
-  max-width: 32ch;
+.eyebrow {
+  margin: 0 0 0.45rem;
   font-family: "Unbounded", sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-  line-height: 1.3;
-  color: var(--sea-deep);
-}
-
-.team-roster {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.7rem;
-  max-width: 28ch;
-}
-
-.team-roster li {
-  display: grid;
-  gap: 0.15rem;
-  padding-bottom: 0.65rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.team-roster .role {
-  font-family: "Unbounded", sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--matrix-dim);
 }
 
-.team-roster strong {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.team-visual,
-.community-visual {
+.lead {
   margin: 0;
-  width: min(240px, 70%);
+  max-width: 36ch;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
 }
 
-.team-visual img,
-.community-visual img {
+.block-body {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+@media (min-width: 720px) {
+  .block-body {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.shot {
+  margin: 0;
+  width: min(220px, 55vw);
+}
+
+.shot img {
   display: block;
   width: 100%;
   height: auto;
@@ -399,36 +386,58 @@ section p,
   aspect-ratio: 16 / 10;
 }
 
-.community {
+.roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  gap: 1.75rem;
-  align-items: start;
+  gap: 0.75rem;
 }
 
-@media (min-width: 780px) {
-  .community {
-    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.75fr);
-    gap: 2rem;
+@media (min-width: 560px) {
+  .roster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 
-.community-hook {
-  margin: 0 0 0.85rem;
-  max-width: 28ch;
-  font-family: "Unbounded", sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
-  line-height: 1.3;
-  color: var(--sea-deep);
+.roster li {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.85rem 0 0;
+  border-top: 2px solid var(--matrix-dim);
 }
 
-.community-copy p + p {
-  margin-top: 0.85rem;
+.roster .role {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--matrix-dim);
+}
+
+.roster strong {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.block-actions p {
+  margin: 0 0 1.1rem;
+  max-width: 42ch;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.15rem;
 }
 
 .community-cta {
   display: inline-flex;
-  margin-top: 1.25rem;
   min-height: 2.75rem;
   align-items: center;
   padding: 0.65rem 1.1rem;
@@ -445,19 +454,7 @@ section p,
   background: var(--sea-deep);
 }
 
-.community-aside {
-  display: grid;
-  gap: 0.9rem;
-  justify-items: start;
-}
-
-.community-extras {
-  display: grid;
-  gap: 0.45rem;
-  width: min(240px, 70%);
-}
-
-.community-extras a {
+.text-link {
   font-family: "Unbounded", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
@@ -466,10 +463,10 @@ section p,
   text-decoration: none;
   color: var(--sea-deep);
   border-bottom: 1px solid var(--line);
-  padding: 0.45rem 0;
+  padding-bottom: 0.15rem;
 }
 
-.community-extras a:hover {
+.text-link:hover {
   color: var(--matrix-dim);
   border-bottom-color: var(--matrix-dim);
 }
