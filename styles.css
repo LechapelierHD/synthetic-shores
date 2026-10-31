@@ -480,6 +480,36 @@ section p,
   color: var(--ink-soft);
 }
 
+.license-full {
+  margin: 0 0 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.license-full h2 {
+  margin: 0 0 0.85rem;
+  font-family: "Unbounded", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sea-deep);
+}
+
+.license-text {
+  margin: 0;
+  padding: 1.1rem 1.15rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(11, 61, 70, 0.04);
+  color: var(--ink-soft);
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
 .license-summary {
   margin: 0 0 2rem;
   max-width: 42ch;
